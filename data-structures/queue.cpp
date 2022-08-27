@@ -46,4 +46,8 @@ class Queue {
         // if the queue is empty
         if (this->size == 0) this->tail = this->head;
     }
+
+    int size(){
+        return this->size;
+    }
 };

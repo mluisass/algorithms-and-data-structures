@@ -4,9 +4,9 @@ using namespace std;
 class Heap 
 {
     int *h;
-    int size;
     int max_size;
     int pos_size;
+    int size;
 
     void resize(){
         max_size = 2 * max_size;
@@ -43,12 +43,15 @@ public:
         max_size = n;
     }
     
-    void extract(int i){
+    int pop(){
         if (size == 0) return;
 
-        swap(h[i], h[size-1]);
+        int deleted = h[0];
+        swap(h[0], h[size-1]);
         size--;
-        heapify(i);
+        heapify(0);
+
+        return deleted;
     }
     void insert(int val){
         if (size == max_size) resize();
@@ -56,5 +59,8 @@ public:
         h[size] = val;
         bubble_up(size);
         size++;
+    }
+    int size(){
+        return this->size;
     }
 };
